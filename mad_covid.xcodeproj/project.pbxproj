@@ -163,6 +163,8 @@
 		8532957C26F3A553004126BD /* ErrCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532957B26F3A553004126BD /* ErrCard.swift */; };
 		8532957E26F3A579004126BD /* PlainCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532957D26F3A579004126BD /* PlainCard.swift */; };
 		8532958026F3BA77004126BD /* SymCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532957F26F3BA77004126BD /* SymCard.swift */; };
+		85D83EA326F4E1E700439B05 /* AlamofireNetworkActivityLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 85D83EA226F4E1E700439B05 /* AlamofireNetworkActivityLogger */; };
+		85D83EA626F4E67A00439B05 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D83EA526F4E67A00439B05 /* Fonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -328,7 +330,9 @@
 		8532957826F3A4B0004126BD /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8532957B26F3A553004126BD /* ErrCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrCard.swift; sourceTree = "<group>"; };
 		8532957D26F3A579004126BD /* PlainCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainCard.swift; sourceTree = "<group>"; };
-		8532957F26F3BA77004126BD /* SymCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymCard.swift; sourceTree = "<group>"; };
+		8532957F26F3BA77004126BD /* SymCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymCard.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		85D83EA426F4E62400439B05 /* mad-covid-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "mad-covid-Info.plist"; sourceTree = SOURCE_ROOT; };
+		85D83EA526F4E67A00439B05 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +343,7 @@
 				8532946126F39599004126BD /* MediaSwiftUI in Frameworks */,
 				8532946426F395DA004126BD /* SPPermissionsCamera in Frameworks */,
 				8532945C26F39544004126BD /* SwiftUIX in Frameworks */,
+				85D83EA326F4E1E700439B05 /* AlamofireNetworkActivityLogger in Frameworks */,
 				8532946626F395DA004126BD /* SPPermissionsContacts in Frameworks */,
 				8532945626F39514004126BD /* SDWebImageSwiftUI in Frameworks */,
 				8532945F26F39599004126BD /* MediaCore in Frameworks */,
@@ -392,6 +397,7 @@
 		8532941826F38FB2004126BD /* mad_covid */ = {
 			isa = PBXGroup;
 			children = (
+				85D83EA426F4E62400439B05 /* mad-covid-Info.plist */,
 				8532957A26F3A54A004126BD /* Views */,
 				8532957726F3A4A8004126BD /* Common */,
 				8532956B26F39AE9004126BD /* Services */,
@@ -595,6 +601,7 @@
 			isa = PBXGroup;
 			children = (
 				8532957826F3A4B0004126BD /* Colors.swift */,
+				85D83EA526F4E67A00439B05 /* Fonts.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -639,6 +646,7 @@
 				8532946526F395DA004126BD /* SPPermissionsContacts */,
 				8532946726F395DA004126BD /* SPPermissionsPhotoLibrary */,
 				8532956F26F39B53004126BD /* Alamofire */,
+				85D83EA226F4E1E700439B05 /* AlamofireNetworkActivityLogger */,
 			);
 			productName = mad_covid;
 			productReference = 8532941626F38FB2004126BD /* mad_covid.app */;
@@ -723,6 +731,7 @@
 				8532945D26F39599004126BD /* XCRemoteSwiftPackageReference "Media" */,
 				8532946226F395DA004126BD /* XCRemoteSwiftPackageReference "SPPermissions" */,
 				8532956E26F39B53004126BD /* XCRemoteSwiftPackageReference "Alamofire" */,
+				85D83EA126F4E1E700439B05 /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityLogger" */,
 			);
 			productRefGroup = 8532941726F38FB2004126BD /* Products */;
 			projectDirPath = "";
@@ -891,6 +900,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85D83EA626F4E67A00439B05 /* Fonts.swift in Sources */,
 				8532957426F3A325004126BD /* MainScreen.swift in Sources */,
 				8532957926F3A4B0004126BD /* Colors.swift in Sources */,
 				8532957C26F3A553004126BD /* ErrCard.swift in Sources */,
@@ -1067,6 +1077,7 @@
 				DEVELOPMENT_TEAM = 99C2LB4W93;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "mad-covid-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1097,6 +1108,7 @@
 				DEVELOPMENT_TEAM = 99C2LB4W93;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "mad-covid-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1334,6 +1346,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		85D83EA126F4E1E700439B05 /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityLogger" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/konkab/AlamofireNetworkActivityLogger";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1401,6 +1421,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8532956E26F39B53004126BD /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		85D83EA226F4E1E700439B05 /* AlamofireNetworkActivityLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85D83EA126F4E1E700439B05 /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityLogger" */;
+			productName = AlamofireNetworkActivityLogger;
 		};
 /* End XCSwiftPackageProductDependency section */
 

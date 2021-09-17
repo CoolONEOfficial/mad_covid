@@ -18,15 +18,15 @@ struct SigninScreen: View {
         ScrollView(.vertical) {
             VStack(alignment: .center, spacing: 0) {
                 Group {
-                    Text("Sign in").font(.system(size: 24)).padding(.vertical, 40)
-                    Text("if you don’t have account credentials, you can take it in near hospital in your city after vaccination").font(.system(size: 14)).padding(.vertical, 27)
+                    Text("Sign in").font(.custom(24)).padding(.vertical, 40)
+                    Text("if you don’t have account credentials, you can take it in near hospital in your city after vaccination").font(.custom(14)).padding(.vertical, 27)
                     HStack {
-                        Text("Your login").font(.system(size: 14)).padding(.bottom, 12)
+                        Text("Your login").font(.custom(14)).padding(.bottom, 12)
                         Spacer()
                     }
                     TextField("", text: $vm.login).modifier(TFBackground()).padding(.bottom, 45)
                     HStack {
-                        Text("Your password").font(.system(size: 14)).padding(.bottom, 12)
+                        Text("Your password").font(.custom(14)).padding(.bottom, 12)
                         Spacer()
                     }
                     SecureField("", text: $vm.password).modifier(TFBackground())
@@ -43,10 +43,10 @@ struct SigninScreen: View {
                 }).buttonStyle(BS.plain).padding(.top, 52).fullScreenCover(isPresented: $vm.mainActive, onDismiss: nil, content: {
                     ContentView()
                 })
-                
-//                NavigationLink("", isActive: $vm.mainActive, destination: { MainScreen() }).hidden()
-                
             }.padding(.horizontal, 18)
+                .alert(isPresented: $vm.alarm) {
+                    Alert(title: Text(vm.alarmText), message: nil, dismissButton: nil)
+                }
         }
     }
 }

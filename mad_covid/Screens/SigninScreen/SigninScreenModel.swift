@@ -22,8 +22,23 @@ class SigninScreenModel: ObservableObject {
     
     let service: NetworkService = .shared
     
+    @Published
+    var alarm = false
+    var alarmText = "" {
+        didSet {
+            alarm = true
+        }
+    }
+
     func signIn() {
-        guard login.contains("@") else { return }
+        guard login.contains("@") else {
+            alarmText = "Invalid email"
+            return
+        }
+        guard reach.isReachable else {
+            alarmText = "No internet"
+            return
+        }
         withAnimation {
             err = false
         }

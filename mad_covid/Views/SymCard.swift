@@ -14,27 +14,27 @@ struct SymCard: View {
     var body: some View {
         VStack(spacing: 0) {
             let health = sym.probability_infection <= 0
-            Text(health ? "CLEAR" : "CALL TO DOCTOR").font(.system(size: 24, weight: .bold)).height(42).frame(maxWidth: .infinity).backgroundColor(health ? .cardHealth : .cardInfected)
+            Text(health ? "CLEAR" : "CALL TO DOCTOR").font(.custom(24).bold()).height(42).frame(maxWidth: .infinity).backgroundColor(health ? .cardHealth : .cardInfected)
             
 
             VStack(alignment: .leading, spacing: 0) {
                 
                 HStack(spacing: 25) {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Name").font(.system(size: 12))
-                        Text("John Doe").font(.system(size: 24, weight: .bold))
+                        Text("Name").font(.custom(12))
+                        Text("John Doe").font(.custom(24).bold())
                     }.width(110)
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Date and Time").font(.system(size: 12))
+                        Text("Date and Time").font(.custom(12))
                         HStack(spacing: 0) {
-                            Text("02/08").font(.system(size: 24, weight: .bold))
-                            Text("/2021   06:58AM").font(.system(size: 14)).padding(.top, 4)
+                            Text("02/08").font(.custom(24).bold())
+                            Text("/2021   06:58AM").font(.custom(14)).padding(.top, 4)
                             Spacer()
                         }
                     }
                 }.padding(.bottom, 20)
                 
-                Text(health ? "* Wear mask.  Keep 2m distance.  Wash hands." : "You may be infected with a virus").font(.system(size: 14))
+                Text(health ? "* Wear mask.  Keep 2m distance.  Wash hands." : "You may be infected with a virus").font(.custom(14))
                 
             }.padding(16)
             
@@ -43,14 +43,17 @@ struct SymCard: View {
             VStack(alignment: .leading, spacing: 0) {
                 Button(action: {
                     let str: String
-                    let date = Date().formatted(date: .short, time: .none)
+                    let df = DateFormatter()
+                    df.dateFormat = "dd/MM/yyyy"
+                    let date = df.string(from: sym.date)
                     if health {
                         str = "As of \(date), it is likely that I am healthy (but this is not certain)"
                     } else {
                         str = "As of \(date), there is a possibility that I have a covid"
                     }
-                    
-                    // TODO: share text
+
+                    let act = UIActivityViewController(activityItems: [str] as [Any], applicationActivities: nil)
+                    UIScreen.main.focusedView?.window?.rootViewController?.present(act, animated: true, completion: nil)
                 }) {
                     Image("share").resizedToFit(20)
                 }

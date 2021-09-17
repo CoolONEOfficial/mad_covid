@@ -13,7 +13,7 @@ struct ErrCard: View {
 
     var body: some View {
         HStack(spacing: 16) {
-            Text(title).font(.system(size: 14)).frame(maxWidth: .infinity)
+            Text(title).font(.custom(14)).frame(maxWidth: .infinity)
             Spacer()
             Image("err").resizedToFit(16)
         }.padding(16)

@@ -8,6 +8,9 @@
 import Foundation
 import Alamofire
 import SwiftUI
+import AlamofireNetworkActivityLogger
+
+let reach = NetworkReachabilityManager()!
 
 struct SignInResp: Decodable {
     let data: Data?
@@ -20,7 +23,10 @@ struct SignInResp: Decodable {
 
 struct SymResp: Decodable {
     let data: [Sym]
-    
+}
+
+struct CasesResp: Decodable {
+    let data: Int
 }
 
 struct Sym: Decodable {
@@ -29,7 +35,13 @@ struct Sym: Decodable {
 }
 
 class NetworkService {
-    private init() {}
+    private init() {
+        NetworkActivityLogger.shared.startLogging()
+    }
+    
+    deinit {
+        NetworkActivityLogger.shared.stopLogging()
+    }
     
     static let shared: NetworkService = .init()
 
@@ -77,6 +89,18 @@ class NetworkService {
 
             default:
                 completion([])
+            }
+        }
+    }
+    
+    func fetchCases(completion: @escaping (Int?) -> Void) {
+        AF.request(base + "/cases", method: .get).responseDecodable(of: CasesResp.self) { [weak self] result in
+            switch result.result {
+            case let .success(resp):
+                completion(resp.data)
+
+            default:
+                completion(nil)
             }
         }
     }

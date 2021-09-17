@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DynamicColor
 
 struct MainScreen: View {
     @StateObject
@@ -15,22 +16,33 @@ struct MainScreen: View {
         VStack(alignment: .center, spacing: 0) {
             Group {
                 ZStack {
-                    Text("WSA Care").font(.system(size: 24, weight: .bold))
+                    Text("WSA Care").font(.custom(24).bold())
                     HStack {
                         Spacer()
                         Image("qr").resizedToFit(24)
                     }
                 }.padding(.bottom, 31).frame(maxWidth: .infinity)
                 
-                Text("Aug 2, 2021").font(.system(size: 16, weight: .bold)).padding(.bottom, 18)
+                Text("Aug 2, 2021").font(.custom(16).bold()).padding(.bottom, 18)
                 
-                PlainCard {
-                    HStack {
-                        Text("No case").font(.system(size: 14, weight: .bold))
-                        Text("in skill area in the last 14 days").font(.system(size: 14))
-                        Spacer()
-                    }
-                }.padding(.bottom, 12)
+                let cases = vm.cases ?? 0
+                if cases == 0 {
+                    PlainCard {
+                        HStack {
+                            Text("No case").font(.custom(14).bold())
+                            Text("in skill area in the last 14 days").font(.custom(14))
+                            Spacer()
+                        }
+                    }.padding(.bottom, 12)
+                } else {
+                    PlainCard(redColor: true) {
+                        HStack {
+                            Text("\(cases) cases").font(.custom(14).bold())
+                            Text("in skill area in the last 14 days").font(.custom(14))
+                            Spacer()
+                        }
+                    }.padding(.bottom, 12)   
+                }
                 
                 if let sym = vm.symToday {
                     
@@ -43,8 +55,8 @@ struct MainScreen: View {
             
             if false {
                 Group {
-                    Text("John,").font(.system(size: 28))
-                    Text("How are you feeling today?").font(.system(size: 24, weight: .bold)).padding(.bottom, 20)
+                    Text("John,").font(.custom(28))
+                    Text("How are you feeling today?").font(.custom(24).bold()).padding(.bottom, 20)
                     
                     Button("Check in now") {
                         
@@ -52,7 +64,7 @@ struct MainScreen: View {
                     
                     Button(action: {}) {
                         VStack(spacing: 0) {
-                            Text("Why do this?").font(.system(size: 13)).background(Rectangle().fill(.white).height(1), alignment: .bottom)
+                            Text("Why do this?").font(.custom(13)).background(Rectangle().fill(.white).height(1), alignment: .bottom)
                             
                         }
                     }
@@ -61,8 +73,8 @@ struct MainScreen: View {
                 Group {
                     Spacer()
                     Image("checkmark").resizedToFit(28).padding(.bottom, 8)
-                    Text("You have checked in today.").font(.system(size: 18))
-                    Text("Re-check in").font(.system(size: 13)).background(Rectangle().fill(.white).height(1), alignment: .bottom).padding(.top, 8)
+                    Text("You have checked in today.").font(.custom(18))
+                    Text("Re-check in").font(.custom(13)).background(Rectangle().fill(.white).height(1), alignment: .bottom).padding(.top, 8)
                 }
             }
             Spacer()

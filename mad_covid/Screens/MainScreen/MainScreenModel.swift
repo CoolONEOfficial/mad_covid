@@ -15,6 +15,9 @@ class MainScreenModel: ObservableObject {
     @Published
     var symts: [Sym] = []
     
+    @Published
+    var cases: Int?
+    
     var symToday: Sym? {
 //        let df = DateFormatter()
 //        df.dateFormat = ISO8601DateFormatter
@@ -29,6 +32,10 @@ class MainScreenModel: ObservableObject {
     init() {
         service.fetchSymts { [weak self] res in
             self?.symts = res
+        }
+
+        service.fetchCases { [weak self] res in
+            self?.cases = res
         }
     }
 }
