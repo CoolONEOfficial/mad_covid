@@ -7,11 +7,15 @@
 
 import SwiftUI
 import DynamicColor
+import PureSwiftUI
 
 struct MainScreen: View {
     @StateObject
     var vm = MainScreenModel()
 
+    @State
+    var qrOpen = false
+    
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             Group {
@@ -19,7 +23,14 @@ struct MainScreen: View {
                     Text("WSA Care").font(.custom(24).bold())
                     HStack {
                         Spacer()
-                        Image("qr").resizedToFit(24)
+                        Button(action: {
+                            qrOpen = true
+                        }) {
+                            Image("qr").resizedToFit(24)
+                        }
+                        NavigationLink("", isActive: $qrOpen) {
+                            CodeScreen(opened: $qrOpen).backgroundColor(.bg).foregroundColor(.white)
+                        }.hidden()
                     }
                 }.padding(.bottom, 31).frame(maxWidth: .infinity)
                 
@@ -45,9 +56,15 @@ struct MainScreen: View {
                 }
                 
                 if let sym = vm.symToday {
-                    
+                    SymCard(sym: sym)
                 } else {
                     ErrCard(title: "You haven’t report today’s health status.")
+                }
+                
+                Slider().padding(.top, 13)
+                
+                if let syms = vm.symts {
+                    Timeline(syms: syms).padding(.top, 17)
                 }
             }
             

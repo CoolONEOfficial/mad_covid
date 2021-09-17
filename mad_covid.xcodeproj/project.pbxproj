@@ -163,8 +163,25 @@
 		8532957C26F3A553004126BD /* ErrCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532957B26F3A553004126BD /* ErrCard.swift */; };
 		8532957E26F3A579004126BD /* PlainCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532957D26F3A579004126BD /* PlainCard.swift */; };
 		8532958026F3BA77004126BD /* SymCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532957F26F3BA77004126BD /* SymCard.swift */; };
+		8565C11E26F4F5B60044C37C /* CodeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8565C11C26F4F5B60044C37C /* CodeScreen.swift */; };
+		8565C11F26F4F5B60044C37C /* CodeScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8565C11D26F4F5B60044C37C /* CodeScreenModel.swift */; };
+		8565C12726F4FEEC0044C37C /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8565C12626F4FEEC0044C37C /* WidgetKit.framework */; };
+		8565C12926F4FEED0044C37C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8565C12826F4FEED0044C37C /* SwiftUI.framework */; };
+		8565C12C26F4FEED0044C37C /* covidWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8565C12B26F4FEED0044C37C /* covidWidget.swift */; };
+		8565C12E26F4FEEF0044C37C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8565C12D26F4FEEF0044C37C /* Assets.xcassets */; };
+		8565C13226F4FEEF0044C37C /* covidWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8565C12426F4FEEC0044C37C /* covidWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8565C13826F500A60044C37C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532956C26F39AF6004126BD /* NetworkService.swift */; };
+		8565C13A26F5014E0044C37C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 8565C13926F5014E0044C37C /* SDWebImageSwiftUI */; };
+		8565C13C26F502320044C37C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8565C13B26F502320044C37C /* Alamofire */; };
+		8565C13E26F502370044C37C /* AlamofireNetworkActivityLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 8565C13D26F502370044C37C /* AlamofireNetworkActivityLogger */; };
+		8565C13F26F5094E0044C37C /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D83EA526F4E67A00439B05 /* Fonts.swift */; };
+		8565C14026F509510044C37C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532957826F3A4B0004126BD /* Colors.swift */; };
+		8565C14226F509A90044C37C /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 8565C14126F509A90044C37C /* DynamicColor */; };
 		85D83EA326F4E1E700439B05 /* AlamofireNetworkActivityLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 85D83EA226F4E1E700439B05 /* AlamofireNetworkActivityLogger */; };
 		85D83EA626F4E67A00439B05 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D83EA526F4E67A00439B05 /* Fonts.swift */; };
+		85D83EA826F4EB3100439B05 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D83EA726F4EB3100439B05 /* Slider.swift */; };
+		85D83EAB26F4EB5000439B05 /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = 85D83EAA26F4EB5000439B05 /* SwiftUIPager */; };
+		85D83EAD26F4EFB100439B05 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D83EAC26F4EFB100439B05 /* Timeline.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,7 +199,28 @@
 			remoteGlobalIDString = 8532941526F38FB2004126BD;
 			remoteInfo = mad_covid;
 		};
+		8565C13026F4FEEF0044C37C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8532940E26F38FB2004126BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8565C12326F4FEEC0044C37C;
+			remoteInfo = covidWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8565C13626F4FEEF0044C37C /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8565C13226F4FEEF0044C37C /* covidWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8532941626F38FB2004126BD /* mad_covid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mad_covid.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -331,8 +369,18 @@
 		8532957B26F3A553004126BD /* ErrCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrCard.swift; sourceTree = "<group>"; };
 		8532957D26F3A579004126BD /* PlainCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainCard.swift; sourceTree = "<group>"; };
 		8532957F26F3BA77004126BD /* SymCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymCard.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		8565C11C26F4F5B60044C37C /* CodeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeScreen.swift; sourceTree = "<group>"; };
+		8565C11D26F4F5B60044C37C /* CodeScreenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeScreenModel.swift; sourceTree = "<group>"; };
+		8565C12426F4FEEC0044C37C /* covidWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = covidWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8565C12626F4FEEC0044C37C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		8565C12826F4FEED0044C37C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		8565C12B26F4FEED0044C37C /* covidWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = covidWidget.swift; sourceTree = "<group>"; };
+		8565C12D26F4FEEF0044C37C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8565C12F26F4FEEF0044C37C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85D83EA426F4E62400439B05 /* mad-covid-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "mad-covid-Info.plist"; sourceTree = SOURCE_ROOT; };
 		85D83EA526F4E67A00439B05 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		85D83EA726F4EB3100439B05 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
+		85D83EAC26F4EFB100439B05 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,6 +390,7 @@
 			files = (
 				8532946126F39599004126BD /* MediaSwiftUI in Frameworks */,
 				8532946426F395DA004126BD /* SPPermissionsCamera in Frameworks */,
+				85D83EAB26F4EB5000439B05 /* SwiftUIPager in Frameworks */,
 				8532945C26F39544004126BD /* SwiftUIX in Frameworks */,
 				85D83EA326F4E1E700439B05 /* AlamofireNetworkActivityLogger in Frameworks */,
 				8532946626F395DA004126BD /* SPPermissionsContacts in Frameworks */,
@@ -371,6 +420,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8565C12126F4FEEC0044C37C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8565C13A26F5014E0044C37C /* SDWebImageSwiftUI in Frameworks */,
+				8565C13C26F502320044C37C /* Alamofire in Frameworks */,
+				8565C13E26F502370044C37C /* AlamofireNetworkActivityLogger in Frameworks */,
+				8565C12926F4FEED0044C37C /* SwiftUI.framework in Frameworks */,
+				8565C14226F509A90044C37C /* DynamicColor in Frameworks */,
+				8565C12726F4FEEC0044C37C /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -380,6 +442,8 @@
 				8532941826F38FB2004126BD /* mad_covid */,
 				8532942E26F38FB5004126BD /* mad_covidTests */,
 				8532943826F38FB5004126BD /* mad_covidUITests */,
+				8565C12A26F4FEED0044C37C /* covidWidget */,
+				8565C12526F4FEEC0044C37C /* Frameworks */,
 				8532941726F38FB2004126BD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -390,6 +454,7 @@
 				8532941626F38FB2004126BD /* mad_covid.app */,
 				8532942B26F38FB5004126BD /* mad_covidTests.xctest */,
 				8532943526F38FB5004126BD /* mad_covidUITests.xctest */,
+				8565C12426F4FEEC0044C37C /* covidWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -432,6 +497,7 @@
 		8532946926F39640004126BD /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				8565C11B26F4F5900044C37C /* CodeScreen */,
 				8532957226F3A313004126BD /* SigninScreen */,
 				8532957126F3A304004126BD /* MainScreen */,
 			);
@@ -612,8 +678,38 @@
 				8532957B26F3A553004126BD /* ErrCard.swift */,
 				8532957D26F3A579004126BD /* PlainCard.swift */,
 				8532957F26F3BA77004126BD /* SymCard.swift */,
+				85D83EA726F4EB3100439B05 /* Slider.swift */,
+				85D83EAC26F4EFB100439B05 /* Timeline.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8565C11B26F4F5900044C37C /* CodeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				8565C11C26F4F5B60044C37C /* CodeScreen.swift */,
+				8565C11D26F4F5B60044C37C /* CodeScreenModel.swift */,
+			);
+			path = CodeScreen;
+			sourceTree = "<group>";
+		};
+		8565C12526F4FEEC0044C37C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8565C12626F4FEEC0044C37C /* WidgetKit.framework */,
+				8565C12826F4FEED0044C37C /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8565C12A26F4FEED0044C37C /* covidWidget */ = {
+			isa = PBXGroup;
+			children = (
+				8565C12B26F4FEED0044C37C /* covidWidget.swift */,
+				8565C12D26F4FEEF0044C37C /* Assets.xcassets */,
+				8565C12F26F4FEEF0044C37C /* Info.plist */,
+			);
+			path = covidWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -626,10 +722,12 @@
 				8532941226F38FB2004126BD /* Sources */,
 				8532941326F38FB2004126BD /* Frameworks */,
 				8532941426F38FB2004126BD /* Resources */,
+				8565C13626F4FEEF0044C37C /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8565C13126F4FEEF0044C37C /* PBXTargetDependency */,
 			);
 			name = mad_covid;
 			packageProductDependencies = (
@@ -647,6 +745,7 @@
 				8532946726F395DA004126BD /* SPPermissionsPhotoLibrary */,
 				8532956F26F39B53004126BD /* Alamofire */,
 				85D83EA226F4E1E700439B05 /* AlamofireNetworkActivityLogger */,
+				85D83EAA26F4EB5000439B05 /* SwiftUIPager */,
 			);
 			productName = mad_covid;
 			productReference = 8532941626F38FB2004126BD /* mad_covid.app */;
@@ -688,6 +787,29 @@
 			productReference = 8532943526F38FB5004126BD /* mad_covidUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		8565C12326F4FEEC0044C37C /* covidWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8565C13326F4FEEF0044C37C /* Build configuration list for PBXNativeTarget "covidWidgetExtension" */;
+			buildPhases = (
+				8565C12026F4FEEC0044C37C /* Sources */,
+				8565C12126F4FEEC0044C37C /* Frameworks */,
+				8565C12226F4FEEC0044C37C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = covidWidgetExtension;
+			packageProductDependencies = (
+				8565C13926F5014E0044C37C /* SDWebImageSwiftUI */,
+				8565C13B26F502320044C37C /* Alamofire */,
+				8565C13D26F502370044C37C /* AlamofireNetworkActivityLogger */,
+				8565C14126F509A90044C37C /* DynamicColor */,
+			);
+			productName = covidWidgetExtension;
+			productReference = 8565C12426F4FEEC0044C37C /* covidWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -708,6 +830,9 @@
 					8532943426F38FB5004126BD = {
 						CreatedOnToolsVersion = 13.0;
 						TestTargetID = 8532941526F38FB2004126BD;
+					};
+					8565C12326F4FEEC0044C37C = {
+						CreatedOnToolsVersion = 13.0;
 					};
 				};
 			};
@@ -732,6 +857,7 @@
 				8532946226F395DA004126BD /* XCRemoteSwiftPackageReference "SPPermissions" */,
 				8532956E26F39B53004126BD /* XCRemoteSwiftPackageReference "Alamofire" */,
 				85D83EA126F4E1E700439B05 /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityLogger" */,
+				85D83EA926F4EB5000439B05 /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
 			);
 			productRefGroup = 8532941726F38FB2004126BD /* Products */;
 			projectDirPath = "";
@@ -740,6 +866,7 @@
 				8532941526F38FB2004126BD /* mad_covid */,
 				8532942A26F38FB5004126BD /* mad_covidTests */,
 				8532943426F38FB5004126BD /* mad_covidUITests */,
+				8565C12326F4FEEC0044C37C /* covidWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -893,6 +1020,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8565C12226F4FEEC0044C37C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8565C12E26F4FEEF0044C37C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -900,11 +1035,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85D83EAD26F4EFB100439B05 /* Timeline.swift in Sources */,
 				85D83EA626F4E67A00439B05 /* Fonts.swift in Sources */,
 				8532957426F3A325004126BD /* MainScreen.swift in Sources */,
 				8532957926F3A4B0004126BD /* Colors.swift in Sources */,
 				8532957C26F3A553004126BD /* ErrCard.swift in Sources */,
+				85D83EA826F4EB3100439B05 /* Slider.swift in Sources */,
+				8565C11F26F4F5B60044C37C /* CodeScreenModel.swift in Sources */,
 				8532942626F38FB4004126BD /* mad_covid.xcdatamodeld in Sources */,
+				8565C11E26F4F5B60044C37C /* CodeScreen.swift in Sources */,
 				8532957E26F3A579004126BD /* PlainCard.swift in Sources */,
 				8532958026F3BA77004126BD /* SymCard.swift in Sources */,
 				8532942326F38FB4004126BD /* Persistence.swift in Sources */,
@@ -934,6 +1073,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8565C12026F4FEEC0044C37C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8565C13826F500A60044C37C /* NetworkService.swift in Sources */,
+				8565C14026F509510044C37C /* Colors.swift in Sources */,
+				8565C13F26F5094E0044C37C /* Fonts.swift in Sources */,
+				8565C12C26F4FEED0044C37C /* covidWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -946,6 +1096,11 @@
 			isa = PBXTargetDependency;
 			target = 8532941526F38FB2004126BD /* mad_covid */;
 			targetProxy = 8532943626F38FB5004126BD /* PBXContainerItemProxy */;
+		};
+		8565C13126F4FEEF0044C37C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8565C12326F4FEEC0044C37C /* covidWidgetExtension */;
+			targetProxy = 8565C13026F4FEEF0044C37C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1001,7 +1156,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1056,7 +1211,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1069,6 +1224,7 @@
 		8532944026F38FB5004126BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1100,6 +1256,7 @@
 		8532944126F38FB5004126BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1224,6 +1381,62 @@
 			};
 			name = Release;
 		};
+		8565C13426F4FEEF0044C37C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99C2LB4W93;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = covidWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = covidWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.coolone.mad-covid.covidWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8565C13526F4FEEF0044C37C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99C2LB4W93;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = covidWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = covidWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.coolone.mad-covid.covidWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1259,6 +1472,15 @@
 			buildConfigurations = (
 				8532944626F38FB5004126BD /* Debug */,
 				8532944726F38FB5004126BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8565C13326F4FEEF0044C37C /* Build configuration list for PBXNativeTarget "covidWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8565C13426F4FEEF0044C37C /* Debug */,
+				8565C13526F4FEEF0044C37C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1354,6 +1576,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		85D83EA926F4EB5000439B05 /* XCRemoteSwiftPackageReference "SwiftUIPager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fermoya/SwiftUIPager";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1422,10 +1652,35 @@
 			package = 8532956E26F39B53004126BD /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
+		8565C13926F5014E0044C37C /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8532945426F39514004126BD /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		8565C13B26F502320044C37C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8532956E26F39B53004126BD /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		8565C13D26F502370044C37C /* AlamofireNetworkActivityLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85D83EA126F4E1E700439B05 /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityLogger" */;
+			productName = AlamofireNetworkActivityLogger;
+		};
+		8565C14126F509A90044C37C /* DynamicColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8532945126F394EC004126BD /* XCRemoteSwiftPackageReference "DynamicColor" */;
+			productName = DynamicColor;
+		};
 		85D83EA226F4E1E700439B05 /* AlamofireNetworkActivityLogger */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 85D83EA126F4E1E700439B05 /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityLogger" */;
 			productName = AlamofireNetworkActivityLogger;
+		};
+		85D83EAA26F4EB5000439B05 /* SwiftUIPager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85D83EA926F4EB5000439B05 /* XCRemoteSwiftPackageReference "SwiftUIPager" */;
+			productName = SwiftUIPager;
 		};
 /* End XCSwiftPackageProductDependency section */
 

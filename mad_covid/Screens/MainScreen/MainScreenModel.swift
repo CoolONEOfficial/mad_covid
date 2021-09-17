@@ -21,12 +21,13 @@ class MainScreenModel: ObservableObject {
     var symToday: Sym? {
 //        let df = DateFormatter()
 //        df.dateFormat = ISO8601DateFormatter
-        return symts.first {
-            //if let datee = df.date(from: $0.date) {
-            $0.date.day == Date().day
-            //}
-            return false
-        }
+        return symts.first
+//        {
+//            //if let datee = df.date(from: $0.date) {
+//            $0.date.day == Date().day
+//            //}
+//            return false
+//        }
     }
     
     init() {

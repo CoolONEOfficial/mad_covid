@@ -25,6 +25,10 @@ struct SymResp: Decodable {
     let data: [Sym]
 }
 
+struct QrResp: Decodable {
+    let data: String
+}
+
 struct CasesResp: Decodable {
     let data: Int
 }
@@ -59,6 +63,41 @@ class NetworkService {
         }
     }
 
+    func fetchQrImage(_ qrMode: QrMode = .black, completion: @escaping (UIImage?) -> Void) {
+        fetchQr(qrMode) { res in
+            if let url = res {
+                AF.download(url).responseData { imgRes in
+                    switch imgRes.result {
+                    case let .success(resp):
+                        completion(UIImage(data: resp))
+
+                    default:
+                        completion(nil)
+                    }
+                }
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
+    enum QrMode: String {
+        case black
+        case white
+    }
+
+    func fetchQr(_ qrMode: QrMode = .white, completion: @escaping (URL?) -> Void) {
+        AF.request(base + "/user_qr?\(qrMode.rawValue)", method: .get).responseDecodable(of: QrResp.self) { [weak self] result in
+            switch result.result {
+            case let .success(resp):
+                completion(.init(string: resp.data))
+
+            default:
+                completion(nil)
+            }
+        }
+    }
+
     func signIn(login: String, password: String, completion: @escaping (Bool) -> Void) {
         
         AF.request(base + "/signin/", method: .post, parameters: ["login": login, "password": password] as [String: String], encoder: JSONParameterEncoder.default).responseDecodable(of: SignInResp.self) { [weak self] result in
@@ -79,10 +118,13 @@ class NetworkService {
             completion([])
             return
         }
-
         
+        let dec = JSONDecoder()
+        let fm = DateFormatter()
+        fm.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        dec.dateDecodingStrategy = .formatted(fm)
         
-        AF.request(base + "/symptoms_history?user_id=\(userId)", method: .get).responseDecodable(of: SymResp.self) { [weak self] result in
+        AF.request(base + "/symptoms_history?user_id=\(userId)", method: .get).responseDecodable(of: SymResp.self, decoder: dec) { [weak self] result in
             switch result.result {
             case let .success(resp):
                 completion(resp.data)

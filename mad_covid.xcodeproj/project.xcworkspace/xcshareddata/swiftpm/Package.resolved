@@ -101,6 +101,15 @@
         }
       },
       {
+        "package": "SwiftUIPager",
+        "repositoryURL": "https://github.com/fermoya/SwiftUIPager",
+        "state": {
+          "branch": "develop",
+          "revision": "168614398b1986a6e07060d5d127122643cfe724",
+          "version": null
+        }
+      },
+      {
         "package": "SwiftUIX",
         "repositoryURL": "https://github.com/SwiftUIX/SwiftUIX.git",
         "state": {
