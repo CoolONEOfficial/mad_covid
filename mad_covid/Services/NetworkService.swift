@@ -25,6 +25,11 @@ struct SymResp: Decodable {
     let data: [Sym]
 }
 
+struct EmptyResp: Decodable {
+    let success: Bool
+    let message: String?
+}
+
 struct StatsResp: Decodable {
     let data: Stats
     
@@ -43,7 +48,7 @@ struct StatsResp: Decodable {
         
     }
     
-    var mock: Self {
+    static var mock: Self {
         .init(data: .init(world: .init(infected: 0, death: 0, recovered: 0, vaccinated: 0, recovered_adults: 0, recovered_young: 0), current_city: .init(infected: 0, death: 0, recovered: 0, vaccinated: 0, recovered_adults: 0, recovered_young: 0)))
     }
 }
@@ -54,6 +59,24 @@ struct QrResp: Decodable {
 
 struct CasesResp: Decodable {
     let data: Int
+}
+
+struct SymListResp: Decodable {
+    let data: [Sym]
+    
+    struct Sym: Decodable {
+        let id: Int
+        let title: String
+    }
+}
+
+struct ContactsResp: Decodable {
+    let data: Contacts?
+    
+    struct Contacts: Decodable {
+        let cases: Int
+        let vaccinated: Int
+    }
 }
 
 struct Sym: Decodable {
@@ -125,7 +148,7 @@ class NetworkService {
         
         AF.request(base + "/signin/", method: .post, parameters: ["login": login, "password": password] as [String: String], encoder: JSONParameterEncoder.default).responseDecodable(of: SignInResp.self) { [weak self] result in
             switch result.result {
-            case let .success(resp) where resp.data?.token != nil:
+            case let .success(resp) where resp.data?.id != nil:
                // self?.token = resp.data?.token
                 self?.userId = resp.data?.id
                 completion(true)
@@ -136,11 +159,109 @@ class NetworkService {
         }
     }
     
+    func postPhoto(_ photo: UIImage, completion: @escaping (Bool) -> Void) {
+        //let data: MultipartFormData = .
+        
+        AF.request(base + "/daily_photo", method: .post, parameters: ["file": photo.pngData()!], encoder: URLEncodedFormParameterEncoder.default).responseDecodable(of: EmptyResp.self) { res in
+            switch res.result {
+            case let .success(resp):
+               // self?.token = resp.data?.token
+                //self?.userId = resp.data?.id
+                completion(resp.success)
+
+            default:
+                completion(false)
+            }
+        }
+        
+//        AF.request(base + "/signin/", method: .post, parameters: ["photo": photo.pngData()] as [String: String], encoder: JSONParameterEncoder.default).responseDecodable(of: SignInResp.self) { [weak self] result in
+////            switch result.result {
+////            case let .success(resp) where resp.data?.id != nil:
+////               // self?.token = resp.data?.token
+////                self?.userId = resp.data?.id
+////                completion(true)
+////
+////            default:
+////                completion(false)
+////            }
+//        }
+    }
+    
     func fetchStats(completion: @escaping (StatsResp?) -> Void) {
         AF.request(base + "/stats", method: .get).responseDecodable(of: StatsResp.self) { [weak self] result in
             switch result.result {
             case let .success(resp):
                 completion(resp)
+
+            default:
+                completion(nil)
+            }
+        }
+    }
+    
+    struct Contact: Encodable {
+        let name: String
+        let surname: String
+        let tel: String
+    }
+    
+    func uploadContacts(_ contacts: [Contact], completion: @escaping (Bool) -> Void) {
+        AF.request(base + "/contacts/", method: .post, parameters: contacts, encoder: JSONParameterEncoder.default).responseDecodable(of: EmptyResp.self) { [weak self] result in
+            switch result.result {
+            case let .success(resp):
+               // self?.token = resp.data?.token
+//                self?.userId = resp.data?.id
+                completion(resp.success)
+
+            default:
+                completion(false)
+            }
+        }
+    }
+    
+    func getSyms(completion: @escaping ([Int: String]) -> Void) {
+        AF.request(base + "/symptom_list", method: .get).responseDecodable(of: SymListResp.self) { [weak self] result in
+            switch result.result {
+            case let .success(resp):
+                
+//                var
+//                for (key, val) in resp.data.map { ($0.id, $0.title) } {
+//
+//                }
+                completion(resp.data.reduce([Int:String]()) { dict, entry in
+                    var dict = dict
+                    dict[entry.id] = entry.title
+                    return dict
+                })
+               // self?.token = resp.data?.token
+//                self?.userId = resp.data?.id
+                //completion(resp.success)
+
+            default:
+                completion([:])
+            }
+        }
+    }
+    
+    func postSyms(_ syms: [Int], completion: @escaping (Bool) -> Void) {
+        AF.request(base + "/day_symptoms/", method: .post, parameters: syms, encoder: JSONParameterEncoder.default).responseDecodable(of: EmptyResp.self) { [weak self] result in
+            switch result.result {
+            case let .success(resp):
+               // self?.token = resp.data?.token
+//                self?.userId = resp.data?.id
+                completion(resp.success)
+
+            default:
+                completion(false)
+            }
+        }
+    }
+    
+    func fetchContactsInfo(completion: @escaping (ContactsResp.Contacts?) -> Void) {
+        AF.request(base + "/contacts_info", method: .get).responseDecodable(of: ContactsResp.self) { [weak self] result in
+            switch result.result {
+            case let .success(resp):
+                completion(resp.data)
 
             default:
                 completion(nil)

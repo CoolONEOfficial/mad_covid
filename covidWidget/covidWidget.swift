@@ -87,7 +87,7 @@ struct covidWidgetEntryView : View {
             Text("\((entry.stats?.data.current_city.vaccinated ?? 0).desc) vaccinated").font(.custom(20))
             Text("\((entry.stats?.data.current_city.recovered ?? 0).desc) recovered").font(.custom(20))
             Spacer()
-        }.padding(.vertical, 10).padding(.horizontal, 16).frame(maxWidth: .infinity, maxHeight: .infinity).foregroundColor(.white).background(Color.cardHealth).cornerRadius(22)
+        }.padding(.horizontal, 10).padding(.vertical, 16).frame(maxWidth: .infinity, maxHeight: .infinity).foregroundColor(.white).background(Color.cardHealth).cornerRadius(22)
     }
     
     var body: some View {

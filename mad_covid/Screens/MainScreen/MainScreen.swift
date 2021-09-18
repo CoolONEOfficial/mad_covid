@@ -16,6 +16,9 @@ struct MainScreen: View {
     @State
     var qrOpen = false
     
+    @State
+    var checkOpen = false
+    
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             Group {
@@ -61,9 +64,7 @@ struct MainScreen: View {
                     ErrCard(title: "You haven’t report today’s health status.")
                 }
                 
-                if let stats = vm.stats {
-                    Slider(stats: stats).padding(.top, 13)
-                }
+                Slider(stats:  vm.stats ??  .mock).padding(.top, 13)
                 
                 if let syms = vm.symts {
                     Timeline(syms: syms).padding(.top, 17)
@@ -72,14 +73,24 @@ struct MainScreen: View {
             
             Spacer()
             
-            if false {
+            if vm.symToday == nil {
                 Group {
                     Text("John,").font(.custom(28))
                     Text("How are you feeling today?").font(.custom(24).bold()).padding(.bottom, 20)
                     
-                    Button("Check in now") {
-                        
+                    
+//                    Button(action: {
+//                        checkOpen = true
+//                    }) {
+//                        Text("Re-check in").font(.custom(13)).background(Rectangle().fill(.white).height(1), alignment: .bottom).padding(.top, 8)
+//                    }
+                    NavigationLink("Check in now", isActive: $checkOpen) {
+                        ChecklistScreen(opened: $checkOpen).backgroundColor(.bg).foregroundColor(.white)
                     }.buttonStyle(BS.plain).height(72)
+                    
+//                    Button("Check in now") {
+//
+//                    }.buttonStyle(BS.plain).height(72)
                     
                     Button(action: {}) {
                         VStack(spacing: 0) {
@@ -93,7 +104,17 @@ struct MainScreen: View {
                     Spacer()
                     Image("checkmark").resizedToFit(28).padding(.bottom, 8)
                     Text("You have checked in today.").font(.custom(18))
-                    Text("Re-check in").font(.custom(13)).background(Rectangle().fill(.white).height(1), alignment: .bottom).padding(.top, 8)
+                    
+                    Button(action: {
+                        checkOpen = true
+                    }) {
+                        Text("Re-check in").font(.custom(13)).background(Rectangle().fill(.white).height(1), alignment: .bottom).padding(.top, 8)
+                    }
+                    NavigationLink("", isActive: $checkOpen) {
+                        ChecklistScreen(opened: $checkOpen).backgroundColor(.bg).foregroundColor(.white)
+                    }.hidden()
+                    
+                    
                 }
             }
             Spacer()

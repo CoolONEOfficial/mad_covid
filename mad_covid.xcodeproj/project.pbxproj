@@ -179,6 +179,10 @@
 		8565C14226F509A90044C37C /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 8565C14126F509A90044C37C /* DynamicColor */; };
 		85BE308C26F5FC5C00A77E07 /* IntDesc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BE308B26F5FC5C00A77E07 /* IntDesc.swift */; };
 		85BE308D26F5FC6000A77E07 /* IntDesc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BE308B26F5FC5C00A77E07 /* IntDesc.swift */; };
+		85BE309026F60F9B00A77E07 /* ChecklistScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BE308F26F60F9B00A77E07 /* ChecklistScreen.swift */; };
+		85BE309226F60FA600A77E07 /* ChecklistScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BE309126F60FA600A77E07 /* ChecklistScreenModel.swift */; };
+		85BE309426F617EF00A77E07 /* CheckEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BE309326F617EF00A77E07 /* CheckEntry.swift */; };
+		85BE309626F61BFA00A77E07 /* ChecklistPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BE309526F61BFA00A77E07 /* ChecklistPhoto.swift */; };
 		85D83EA326F4E1E700439B05 /* AlamofireNetworkActivityLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 85D83EA226F4E1E700439B05 /* AlamofireNetworkActivityLogger */; };
 		85D83EA626F4E67A00439B05 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D83EA526F4E67A00439B05 /* Fonts.swift */; };
 		85D83EA826F4EB3100439B05 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D83EA726F4EB3100439B05 /* Slider.swift */; };
@@ -380,6 +384,10 @@
 		8565C12D26F4FEEF0044C37C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8565C12F26F4FEEF0044C37C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85BE308B26F5FC5C00A77E07 /* IntDesc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntDesc.swift; sourceTree = "<group>"; };
+		85BE308F26F60F9B00A77E07 /* ChecklistScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistScreen.swift; sourceTree = "<group>"; };
+		85BE309126F60FA600A77E07 /* ChecklistScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistScreenModel.swift; sourceTree = "<group>"; };
+		85BE309326F617EF00A77E07 /* CheckEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEntry.swift; sourceTree = "<group>"; };
+		85BE309526F61BFA00A77E07 /* ChecklistPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistPhoto.swift; sourceTree = "<group>"; };
 		85D83EA426F4E62400439B05 /* mad-covid-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "mad-covid-Info.plist"; sourceTree = SOURCE_ROOT; };
 		85D83EA526F4E67A00439B05 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		85D83EA726F4EB3100439B05 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
@@ -500,6 +508,7 @@
 		8532946926F39640004126BD /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				85BE308E26F60F8D00A77E07 /* Checklist */,
 				8565C11B26F4F5900044C37C /* CodeScreen */,
 				8532957226F3A313004126BD /* SigninScreen */,
 				8532957126F3A304004126BD /* MainScreen */,
@@ -684,6 +693,7 @@
 				8532957F26F3BA77004126BD /* SymCard.swift */,
 				85D83EA726F4EB3100439B05 /* Slider.swift */,
 				85D83EAC26F4EFB100439B05 /* Timeline.swift */,
+				85BE309326F617EF00A77E07 /* CheckEntry.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -714,6 +724,16 @@
 				8565C12F26F4FEEF0044C37C /* Info.plist */,
 			);
 			path = covidWidget;
+			sourceTree = "<group>";
+		};
+		85BE308E26F60F8D00A77E07 /* Checklist */ = {
+			isa = PBXGroup;
+			children = (
+				85BE308F26F60F9B00A77E07 /* ChecklistScreen.swift */,
+				85BE309126F60FA600A77E07 /* ChecklistScreenModel.swift */,
+				85BE309526F61BFA00A77E07 /* ChecklistPhoto.swift */,
+			);
+			path = Checklist;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1042,13 +1062,16 @@
 				85D83EAD26F4EFB100439B05 /* Timeline.swift in Sources */,
 				85D83EA626F4E67A00439B05 /* Fonts.swift in Sources */,
 				8532957426F3A325004126BD /* MainScreen.swift in Sources */,
+				85BE309626F61BFA00A77E07 /* ChecklistPhoto.swift in Sources */,
 				8532957926F3A4B0004126BD /* Colors.swift in Sources */,
 				8532957C26F3A553004126BD /* ErrCard.swift in Sources */,
 				85D83EA826F4EB3100439B05 /* Slider.swift in Sources */,
 				8565C11F26F4F5B60044C37C /* CodeScreenModel.swift in Sources */,
+				85BE309426F617EF00A77E07 /* CheckEntry.swift in Sources */,
 				8532942626F38FB4004126BD /* mad_covid.xcdatamodeld in Sources */,
 				8565C11E26F4F5B60044C37C /* CodeScreen.swift in Sources */,
 				8532957E26F3A579004126BD /* PlainCard.swift in Sources */,
+				85BE309026F60F9B00A77E07 /* ChecklistScreen.swift in Sources */,
 				8532958026F3BA77004126BD /* SymCard.swift in Sources */,
 				8532942326F38FB4004126BD /* Persistence.swift in Sources */,
 				8532941C26F38FB2004126BD /* ContentView.swift in Sources */,
@@ -1058,6 +1081,7 @@
 				8532956D26F39AF6004126BD /* NetworkService.swift in Sources */,
 				85BE308C26F5FC5C00A77E07 /* IntDesc.swift in Sources */,
 				8532957626F3A333004126BD /* MainScreenModel.swift in Sources */,
+				85BE309226F60FA600A77E07 /* ChecklistScreenModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

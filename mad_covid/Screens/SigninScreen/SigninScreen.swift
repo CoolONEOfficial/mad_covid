@@ -65,15 +65,20 @@ struct SigninScreen_Previews: PreviewProvider {
 
 
 struct BS {
-    static let plain = PlainButtonStyle()
+    static let plain = PlainButtonStyle(right: true)
+    static let plainNoRight = PlainButtonStyle(right: false)
 }
 
 struct PlainButtonStyle: ButtonStyle {
     
+    let right: Bool
+    
     func makeBody(configuration: Configuration) -> some View {
         HStack {
             configuration.label.foregroundColor(.bg)
-            Image("right").resizable().frame(width: 16, height: 10)
+            if right {
+                Image("right").resizable().frame(width: 16, height: 10)
+            }
         }.width(180).padding(16).backgroundColor(.white).clipRoundedRectangle(25)
     }
 }
