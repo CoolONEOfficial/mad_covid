@@ -177,6 +177,8 @@
 		8565C13F26F5094E0044C37C /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D83EA526F4E67A00439B05 /* Fonts.swift */; };
 		8565C14026F509510044C37C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532957826F3A4B0004126BD /* Colors.swift */; };
 		8565C14226F509A90044C37C /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 8565C14126F509A90044C37C /* DynamicColor */; };
+		85BE308C26F5FC5C00A77E07 /* IntDesc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BE308B26F5FC5C00A77E07 /* IntDesc.swift */; };
+		85BE308D26F5FC6000A77E07 /* IntDesc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BE308B26F5FC5C00A77E07 /* IntDesc.swift */; };
 		85D83EA326F4E1E700439B05 /* AlamofireNetworkActivityLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 85D83EA226F4E1E700439B05 /* AlamofireNetworkActivityLogger */; };
 		85D83EA626F4E67A00439B05 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D83EA526F4E67A00439B05 /* Fonts.swift */; };
 		85D83EA826F4EB3100439B05 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D83EA726F4EB3100439B05 /* Slider.swift */; };
@@ -377,6 +379,7 @@
 		8565C12B26F4FEED0044C37C /* covidWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = covidWidget.swift; sourceTree = "<group>"; };
 		8565C12D26F4FEEF0044C37C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8565C12F26F4FEEF0044C37C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85BE308B26F5FC5C00A77E07 /* IntDesc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntDesc.swift; sourceTree = "<group>"; };
 		85D83EA426F4E62400439B05 /* mad-covid-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "mad-covid-Info.plist"; sourceTree = SOURCE_ROOT; };
 		85D83EA526F4E67A00439B05 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		85D83EA726F4EB3100439B05 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
@@ -668,6 +671,7 @@
 			children = (
 				8532957826F3A4B0004126BD /* Colors.swift */,
 				85D83EA526F4E67A00439B05 /* Fonts.swift */,
+				85BE308B26F5FC5C00A77E07 /* IntDesc.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1052,6 +1056,7 @@
 				8532946B26F39650004126BD /* SigninScreen.swift in Sources */,
 				8532956A26F39982004126BD /* SigninScreenModel.swift in Sources */,
 				8532956D26F39AF6004126BD /* NetworkService.swift in Sources */,
+				85BE308C26F5FC5C00A77E07 /* IntDesc.swift in Sources */,
 				8532957626F3A333004126BD /* MainScreenModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1081,6 +1086,7 @@
 				8565C14026F509510044C37C /* Colors.swift in Sources */,
 				8565C13F26F5094E0044C37C /* Fonts.swift in Sources */,
 				8565C12C26F4FEED0044C37C /* covidWidget.swift in Sources */,
+				85BE308D26F5FC6000A77E07 /* IntDesc.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

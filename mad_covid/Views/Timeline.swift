@@ -17,18 +17,25 @@ struct Timeline: View {
         if let sym = sym {
             color = sym.probability_infection > 60 ? Color.cardInfected : Color.timelineTitle
         } else {
-            color = .init(hex: 0x0055D6)
+            color = .init(hex: 0xDBDBDB)
         }
         return color
     }
 
+    
+    
     var hstack: some View {
         HStack(spacing: 0) {
-            let todayIndex = syms.suffix(7).firstIndex { $0.date.day == Date().day }
+//            let todayIndex = syms.suffix(7).firstIndex { $0.date.day == Date().day }
+            let startWeek = Calendar.current.date(byAdding: .day, value: -Date().weekDay, to: .init())!
             ForEach(0..<7) { index in
-                let date = Calendar.current.date(byAdding: .day, value: -index, to: .init())!
-                let isToday = false
-                let sym = syms.first { $0.date.day == date.day }//.suffix(7).indices.contains(index) ? syms[index] : nil
+                
+                let weekday = Date().weekDay
+                let isToday = weekday == index
+                
+                let date = Calendar.current.date(byAdding: .day, value: index, to: startWeek)!
+                //let isToday = false
+                let sym = syms.first { $0.date.year == date.year && $0.date.month == date.month && $0.date.day == date.day }//.suffix(7).indices.contains(index) ? syms[index] : nil
                 let color = color(sym)
                 
                 if index != 0 {
@@ -42,8 +49,14 @@ struct Timeline: View {
                 }
                 
                 ZStack {
-                    Circle().fill(color).strokeCircle(color, lineWidth: 0.1)
+                    if color == .init(hex: 0xDBDBDB) {
+                        Circle().fill(.white).strokeCircle(color, lineWidth: 1.5)
+                    } else {
+                    Circle().fill(color)
+                    
                     Circle().fill(color).strokeCircle(.white, lineWidth: 1.5).padding(2)
+                    }
+                    
                 }.frame(width: isToday ? 18 : 12, height: isToday ? 18 : 12)
                 
                 
@@ -57,6 +70,27 @@ struct Timeline: View {
             Spacer()
             hstack
         }.padding(.vertical, 12).padding(.horizontal, 16).backgroundFill(.white).cornerRadius(16)
+    }
+}
+
+extension Date {
+    var weekDay: Int {
+        let comps = Calendar.current.dateComponents([.weekday], from: self)
+        var weekday = comps.weekday! - Calendar.current.firstWeekday
+        if weekday < 0 {
+            weekday += 7
+        }
+        return weekday - 1
+    }
+
+    var month: Int {
+        let comps = Calendar.current.dateComponents([.month], from: self)
+        return comps.month!
+    }
+    
+    var year: Int {
+        let comps = Calendar.current.dateComponents([.year], from: self)
+        return comps.year!
     }
 }
 

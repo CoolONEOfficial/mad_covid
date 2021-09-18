@@ -61,7 +61,9 @@ struct MainScreen: View {
                     ErrCard(title: "You haven’t report today’s health status.")
                 }
                 
-                Slider().padding(.top, 13)
+                if let stats = vm.stats {
+                    Slider(stats: stats).padding(.top, 13)
+                }
                 
                 if let syms = vm.symts {
                     Timeline(syms: syms).padding(.top, 17)

@@ -18,6 +18,9 @@ class MainScreenModel: ObservableObject {
     @Published
     var cases: Int?
     
+    @Published
+    var stats: StatsResp?
+    
     var symToday: Sym? {
 //        let df = DateFormatter()
 //        df.dateFormat = ISO8601DateFormatter
@@ -37,6 +40,10 @@ class MainScreenModel: ObservableObject {
 
         service.fetchCases { [weak self] res in
             self?.cases = res
+        }
+        
+        service.fetchStats { [weak self] res in
+            self?.stats = res
         }
     }
 }

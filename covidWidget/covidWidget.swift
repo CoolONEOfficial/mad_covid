@@ -19,38 +19,41 @@ struct Provider: TimelineProvider {
     }()
     
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), qr: Provider.qrBig)
+        SimpleEntry(date: Date(), qr: Provider.qrBig, stats: .init(data: .init(world: .init(infected: 0, death: 0, recovered: 0, vaccinated: 0, recovered_adults: 0, recovered_young: 0), current_city: .init(infected: 0, death: 0, recovered: 0, vaccinated: 0, recovered_adults: 0, recovered_young: 0))))
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
         if context.isPreview {
-            let entry = SimpleEntry(date: Date(), qr: Provider.qrBig)
+            let entry = SimpleEntry(date: Date(), qr: Provider.qrBig, stats: .init(data: .init(world: .init(infected: 0, death: 0, recovered: 0, vaccinated: 0, recovered_adults: 0, recovered_young: 0), current_city: .init(infected: 0, death: 0, recovered: 0, vaccinated: 0, recovered_adults: 0, recovered_young: 0))))
                 
             completion(entry)
         } else {
-            NetworkService.shared.fetchQrImage { qr in
-                let entry = SimpleEntry(date: Date(), qr: qr)
-                completion(entry)
+            NetworkService.shared.fetchStats { stats in
+                NetworkService.shared.fetchQrImage { qr in
+                    let entry = SimpleEntry(date: Date(), qr: qr, stats: stats)
+                    completion(entry)
+                }
             }
         }
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        NetworkService.shared.fetchQrImage { qr in
-            var entries: [SimpleEntry] = []
+        NetworkService.shared.fetchStats { stats in
+            NetworkService.shared.fetchQrImage { qr in
+                var entries: [SimpleEntry] = []
 
-            // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-            let currentDate = Date()
-            for hourOffset in 0 ..< 5 {
-                let entryDate = Calendar.current.date(byAdding: .second, value: hourOffset * 4, to: currentDate)!
-                let entry = SimpleEntry(date: entryDate, qr: qr)
-                entries.append(entry)
+                // Generate a timeline consisting of five entries an hour apart, starting from the current date.
+                let currentDate = Date()
+                for hourOffset in 0 ..< 5 {
+                    let entryDate = Calendar.current.date(byAdding: .second, value: hourOffset * 4, to: currentDate)!
+                    let entry = SimpleEntry(date: entryDate, qr: qr, stats: stats)
+                    entries.append(entry)
+                }
+
+                let timeline = Timeline(entries: entries, policy: .atEnd)
+                completion(timeline)
             }
-
-            let timeline = Timeline(entries: entries, policy: .atEnd)
-            completion(timeline)
         }
-        
         
     }
 }
@@ -58,6 +61,7 @@ struct Provider: TimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let qr: UIImage?
+    let stats: StatsResp?
 }
 
 struct covidWidgetEntryView : View {
@@ -76,12 +80,12 @@ struct covidWidgetEntryView : View {
     var stats: some View {
         VStack(alignment: .leading, spacing: 6) {
             VStack(alignment: .leading, spacing: 0) {
-                Text("+150 cases").font(.custom(20).bold())
+                Text("\((entry.stats?.data.current_city.infected ?? 0).desc) cases").font(.custom(20).bold())
                 Text("in your city").font(.custom(20))
                 
             }
-            Text("+50 vaccinated").font(.custom(20))
-            Text("+14 recovered").font(.custom(20))
+            Text("\((entry.stats?.data.current_city.vaccinated ?? 0).desc) vaccinated").font(.custom(20))
+            Text("\((entry.stats?.data.current_city.recovered ?? 0).desc) recovered").font(.custom(20))
             Spacer()
         }.padding(.vertical, 10).padding(.horizontal, 16).frame(maxWidth: .infinity, maxHeight: .infinity).foregroundColor(.white).background(Color.cardHealth).cornerRadius(22)
     }
@@ -101,6 +105,8 @@ struct covidWidgetEntryView : View {
     }
 }
 
+
+
 @main
 struct covidWidget: Widget {
     let kind: String = "covidWidget"
@@ -118,9 +124,9 @@ struct covidWidget: Widget {
 
 struct covidWidget_Previews: PreviewProvider {
     static var previews: some View {
-        covidWidgetEntryView(entry: SimpleEntry(date: Date(), qr: .init()))
+        covidWidgetEntryView(entry: SimpleEntry(date: Date(), qr: .init(), stats: .init(data: .init(world: .init(infected: 0, death: 0, recovered: 0, vaccinated: 0, recovered_adults: 0, recovered_young: 0), current_city: .init(infected: 0, death: 0, recovered: 0, vaccinated: 0, recovered_adults: 0, recovered_young: 0)))))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
-        covidWidgetEntryView(entry: SimpleEntry(date: Date(), qr: .init()))
+        covidWidgetEntryView(entry: SimpleEntry(date: Date(), qr: .init(), stats: .init(data: .init(world: .init(infected: 0, death: 0, recovered: 0, vaccinated: 0, recovered_adults: 0, recovered_young: 0), current_city: .init(infected: 0, death: 0, recovered: 0, vaccinated: 0, recovered_adults: 0, recovered_young: 0)))))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

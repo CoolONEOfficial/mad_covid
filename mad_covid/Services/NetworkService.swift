@@ -25,6 +25,29 @@ struct SymResp: Decodable {
     let data: [Sym]
 }
 
+struct StatsResp: Decodable {
+    let data: Stats
+    
+    struct Stats: Decodable {
+        let world: Stat
+        let current_city: Stat
+        
+        struct Stat: Decodable {
+            let infected: Int
+            let death: Int
+            let recovered: Int
+            let vaccinated: Int
+            let recovered_adults: Int
+            let recovered_young: Int
+        }
+        
+    }
+    
+    var mock: Self {
+        .init(data: .init(world: .init(infected: 0, death: 0, recovered: 0, vaccinated: 0, recovered_adults: 0, recovered_young: 0), current_city: .init(infected: 0, death: 0, recovered: 0, vaccinated: 0, recovered_adults: 0, recovered_young: 0)))
+    }
+}
+
 struct QrResp: Decodable {
     let data: String
 }
@@ -113,6 +136,18 @@ class NetworkService {
         }
     }
     
+    func fetchStats(completion: @escaping (StatsResp?) -> Void) {
+        AF.request(base + "/stats", method: .get).responseDecodable(of: StatsResp.self) { [weak self] result in
+            switch result.result {
+            case let .success(resp):
+                completion(resp)
+
+            default:
+                completion(nil)
+            }
+        }
+    }
+    
     func fetchSymts(completion: @escaping ([Sym]) -> Void) {
         guard let userId = userId else {
             completion([])
@@ -121,7 +156,7 @@ class NetworkService {
         
         let dec = JSONDecoder()
         let fm = DateFormatter()
-        fm.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        fm.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dec.dateDecodingStrategy = .formatted(fm)
         
         AF.request(base + "/symptoms_history?user_id=\(userId)", method: .get).responseDecodable(of: SymResp.self, decoder: dec) { [weak self] result in

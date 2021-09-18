@@ -53,7 +53,7 @@ struct SymCard: View {
                     }
 
                     let act = UIActivityViewController(activityItems: [str] as [Any], applicationActivities: nil)
-                    UIScreen.main.focusedView?.window?.rootViewController?.present(act, animated: true, completion: nil)
+                    UIApplication.shared.windows.first?.rootViewController?.present(act, animated: true, completion: nil)
                 }) {
                     Image("share").resizedToFit(20)
                 }

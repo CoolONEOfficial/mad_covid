@@ -30,6 +30,10 @@ class CodeScreenModel: ObservableObject {
     }
     
     func fetchQr() {
+        guard reach.isReachable else {
+            alarmText = "No internet"
+            return
+        }
         service.fetchQr { [weak self] image in
             if let image = image {
                 self?.qrImage = image
